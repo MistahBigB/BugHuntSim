@@ -9,6 +9,6 @@ class Bug : public Soldier {
 public:
     Bug();
 
-    virtual int Attack() override;
-    virtual int Defend() override;
+    virtual int Attack(Soldier& opponent) override;
+    virtual int Defend(Soldier& opponent) override;
 };

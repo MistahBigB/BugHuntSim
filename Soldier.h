@@ -13,8 +13,8 @@ public:
     int GetArmorSave();
     bool isDead();
 
-    virtual int Attack() = 0;
-    virtual int Defend() = 0;
+    virtual int Attack(Soldier& opponent.Defend()) = 0;
+    virtual int Defend(Soldier& opponent.Defend()) = 0;
 
 protected:
     string name;

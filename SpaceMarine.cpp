@@ -14,14 +14,14 @@ Marine::Marine(const string& NAME, int HEALTH, int ARMORSAVE)
 
 }
 
-int Marine::Attack() {
+int Marine::Attack(Soldier& opponent) {
     int rollToHit = rand() % 10;
     if (rollToHit > 5) {
         cout << "Marine hits!\n";
         cout << "Rolling to wound...\n";
         int rollToWound = rand() % 10;
         if (rollToWound > 8) {
-            Bug::Defend();
+            Bug::Defend(Soldier& opponent.Defend());
         }
     } else {
         cout << "Marine missed!\n";
@@ -30,7 +30,7 @@ int Marine::Attack() {
 
 }
 
-int Marine::Defend() {
+int Marine::Defend(Soldier& opponent) {
     int rollArmorSave = (rand() % 10 ) + Marine.ARMORSAVE;
     if (rollArmorSave < rand() % 10) {
         cout << "Bug wounds!\n";

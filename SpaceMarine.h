@@ -9,6 +9,6 @@ class Marine : public Soldier {
 public:
     Marine(const string &NAME, int HEALTH, int ARMORSAVE);
 
-    virtual int Attack() override;
-    virtual int Defend() override;
+    virtual int Attack(Soldier& opponent) override;
+    virtual int Defend(Soldier& opponent) override;
 };

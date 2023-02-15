@@ -14,14 +14,14 @@ Bug::Bug()
 
 }
 
-int Bug::Attack() {
+int Bug::Attack(Soldier& opponent) {
     int rollToHit = rand() % 10;
     if (rollToHit > 8) {
         cout << "Bug hits!\n";
         cout << "Rolling to wound...\n";
         int rollToWound = rand() % 10;      //will add str/weapon skill or something later
         if (rollToWound > 8) {
-            Marine::Defend();
+            Marine::Defend(Soldier& opponent.Defend());
         }
     } else {
         cout << "Bug missed!\n";
@@ -29,7 +29,7 @@ int Bug::Attack() {
 
 }
 
-int Bug::Defend() {
+int Bug::Defend(Soldier& opponent) {
     int rollArmorSave = (rand() % 10 ) + Soldier::GetArmorSave();
     if (rollArmorSave < rand() % 10) {
         cout << "Marine wounds!\n";
