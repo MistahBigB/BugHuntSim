@@ -1,14 +1,9 @@
 #include "Soldier.h"
 
-Soldier::Soldier(const string &NAME, int HEALTH, int ARMORSAVE)
-    : name(NAME),
-    health(HEALTH),
-    armorsave(ARMORSAVE)
-{
+Soldier::Soldier(const std::string &NAME, int HEALTH, int ARMORSAVE, bool ISDEAD)
+    : name(NAME), health(HEALTH), armorsave(ARMORSAVE), isdead(ISDEAD) {}
 
-}
-
-string Soldier::GetName(){
+std::string Soldier::GetName(){
     return name;
 }
 
@@ -21,5 +16,9 @@ int Soldier::GetArmorSave(){
 }
 
 bool Soldier::isDead(){
-    return health <= 0;
+    if (health <= 0) {
+        return true;
+    } else {
+        return false;
+    }
 }

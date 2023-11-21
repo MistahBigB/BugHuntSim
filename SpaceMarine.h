@@ -3,12 +3,11 @@
 #include <string>
 #include "Soldier.h"
 
-using namespace std;
-
 class Marine : public Soldier {
 public:
-    Marine(const string &NAME, int HEALTH, int ARMORSAVE);
+    Marine(const std::string &NAME, int HEALTH, int ARMORSAVE, bool ISDEAD);
+    virtual ~Marine();
 
-    virtual int Attack(Soldier& opponent) override;
-    virtual int Defend(Soldier& opponent) override;
+    virtual void Attack(Soldier& opponent) override;
+    virtual void Defend(Soldier& opponent) override;
 };

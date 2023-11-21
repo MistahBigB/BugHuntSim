@@ -38,10 +38,10 @@ int main() {
     //Different randomness every time program is executed
     srand(static_cast<unsigned>(time(0)));
 
-    cout << "In the grim darkness of the far future, there is only war....\n\n\n";
+    std::cout << "In the grim darkness of the far future, there is only war....\n\n\n";
 
     //Run many simulations
-    int NUM_OF_SIMS = 10e3;
+    int NUM_OF_SIMS = 10;
 
     //Calculate the total number of wins
     int Marine_wins = 0;
@@ -50,13 +50,13 @@ int main() {
 
     for (int i = 1; i <= NUM_OF_SIMS; i++){
         //generate soldiers
-        Marine Loken("Loken", 1, 5, false);    //instance created in SpaceMarine.cpp
-        Bug ix;                         //attributes set in Bug.cpp
+        Marine Loken("Loken", 1, 5, false);        //instance created in SpaceMarine.cpp
+        Bug ix;                                    //attributes set in Bug.cpp
 
         //fight it out!
         while((Loken.isDead() == false && ix.isDead() == false )){
-            Loken.Attack();
-            ix.Attack();
+            Loken.Attack(ix);
+            ix.Attack(Loken);
         }
         if (Loken.isDead() == true && ix.isDead() == false ){
             Bug_wins++;
@@ -71,9 +71,9 @@ int main() {
     double BugPct = Bug_wins / static_cast<double>(NUM_OF_SIMS) *100;
     double StalematePct = Stalemate / static_cast<double>(NUM_OF_SIMS) *100;
 
-    cout << "Marine wins: " << MarinePct << endl;
-    cout << "Bug wins: " << BugPct << endl;
-    cout << "Stalemate: " << StalematePct << endl;
+    std::cout << "Marine wins: " << MarinePct << std::endl;
+    std::cout << "Bug wins: " << BugPct << std::endl;
+    std::cout << "Stalemate: " << StalematePct << std::endl;
 
     return 0;
 }

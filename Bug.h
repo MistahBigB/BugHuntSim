@@ -3,12 +3,11 @@
 #include <string>
 #include "Soldier.h"
 
-using namespace std;
-
 class Bug : public Soldier {
 public:
     Bug();
+    virtual ~Bug() {}
 
-    virtual int Attack(Soldier& opponent) override;
-    virtual int Defend(Soldier& opponent) override;
+    virtual void Attack(Soldier& opponent) override;
+    virtual void Defend(Soldier& opponent) override;
 };

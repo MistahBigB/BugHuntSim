@@ -4,39 +4,35 @@
 #include "SpaceMarine.h"
 #include "Bug.h"
 
-using namespace std;
-
 //attributes set in main in source.cpp
-Marine::Marine(const string& NAME, int HEALTH, int ARMORSAVE)
-    : Soldier(NAME, HEALTH, ARMORSAVE)
+Marine::Marine(const std::string& NAME, int HEALTH, int ARMORSAVE, bool ISDEAD)
+    : Soldier(NAME, HEALTH, ARMORSAVE, ISDEAD) {}
 
-{
+Marine::~Marine() {}
 
-}
-
-int Marine::Attack(Soldier& opponent) {
+void Marine::Attack(Soldier& opponent) {
     int rollToHit = rand() % 10;
     if (rollToHit > 5) {
-        cout << "Marine hits!\n";
-        cout << "Rolling to wound...\n";
+        std::cout << "Marine hits!\n";
+        std::cout << "Rolling to wound...\n";
         int rollToWound = rand() % 10;
         if (rollToWound > 8) {
-            Bug::Defend(Soldier& opponent.Defend());
+            opponent.Defend(*this);
         }
     } else {
-        cout << "Marine missed!\n";
-        //return;
+        std::cout << "Marine missed!\n";
     }
-
 }
 
-int Marine::Defend(Soldier& opponent) {
-    int rollArmorSave = (rand() % 10 ) + Marine.ARMORSAVE;
+void Marine::Defend(Soldier& opponent) {
+    int rollArmorSave = (rand() % 10 ) + this->GetArmorSave();
     if (rollArmorSave < rand() % 10) {
-        cout << "Bug wounds!\n";
-        Marine.health -=1;
+        std::cout << "Bug wounds!\n";
+        this->health -=1;
+        if ( this->isDead()) {
+            std::cout << "Marine is dead!\n";
+        }
     } else {
-        cout << "Armor holds!\n";
+        std::cout << "Armor holds!\n";
     }
-
 }

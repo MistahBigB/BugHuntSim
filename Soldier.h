@@ -2,23 +2,23 @@
 
 #include <string>
 
-using namespace std;
-
 class Soldier{
 public:
-    Soldier(const string& NAME, int HEALTH, int ARMORSAVE);
+    Soldier(const std::string& NAME, int HEALTH, int ARMORSAVE, bool ISDEAD);
+    virtual ~Soldier() {};
 
-    string GetName();
+    std::string GetName();
     int GetHealth();
     int GetArmorSave();
     bool isDead();
 
-    virtual int Attack(Soldier& opponent.Defend()) = 0;
-    virtual int Defend(Soldier& opponent.Defend()) = 0;
+    virtual void Attack(Soldier& opponent) = 0;
+    virtual void Defend(Soldier& opponent) = 0;
 
 protected:
-    string name;
+    std::string name;
     int health;
     int armorsave;
+    bool isdead;
 
 };
